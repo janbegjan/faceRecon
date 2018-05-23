@@ -28,10 +28,30 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      imageURL: ''
+      imageURL: '',
+      box: {}
     }
   }
 
+  calcFaceLocation = (data) =>{
+    const clarifaiData = data.outputs["0"].data.regions["0"].region_info.bounding_box;
+    const image = document.getElementById('imageUrl');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    
+    return {
+      leftCol: clarifaiData.left_col * width,
+      topRow: clarifaiData.top_row * height,
+      righttCol: width - (clarifaiData.right_col * width),
+      bottomRow: height- (clarifaiData.bottom_row * height)
+    }
+    
+  }
+
+  displayFaceBox =(box) =>{
+    console.log(box);
+    this.setState({box: box})
+  }
   onInputChange = (event) =>{
     this.setState({input: event.target.value});
   }
@@ -39,15 +59,8 @@ class App extends Component {
   onButtonSubmit =() =>{
     this.setState({imageURL: this.state.input});
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-    .then(
-    function(response) {
-      // do something with response
-      console.log(response.outputs["0"].data.regions["0"].region_info.bounding_box);
-    },
-    function(err) {
-      // there was an error
-    }
-  );
+    .then(response => this.displayFaceBox(this.calcFaceLocation(response)))
+    .catch(err => console.log(err));
   }
   render() {
     return (

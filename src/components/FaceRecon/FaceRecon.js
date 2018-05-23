@@ -5,7 +5,7 @@ const FaceRecon = ({imageURL}) =>{
 return(
   <div className='center ma'>
     <div className="absolute mt2">
-      <img src={imageURL} alt="" width='700px' height='auto'/>
+      <img src={imageURL} alt="" id='imageUrl' width='700px' height='auto'/>
     </div>
   </div>
 )
