@@ -42,7 +42,7 @@ class App extends Component {
     return {
       leftCol: clarifaiData.left_col * width,
       topRow: clarifaiData.top_row * height,
-      righttCol: width - (clarifaiData.right_col * width),
+      rightCol: width - (clarifaiData.right_col * width),
       bottomRow: height- (clarifaiData.bottom_row * height)
     }
     
@@ -72,7 +72,7 @@ class App extends Component {
         <Logo />
         <Rank />
         <ImageLinkForm onInputChange= {this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-        <FaceRecon imageURL={this.state.imageURL}/>
+        <FaceRecon box={this.state.box} imageURL={this.state.imageURL}/>
       </div>
     );
   }
