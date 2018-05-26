@@ -8,6 +8,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Clarifai from 'clarifai';
 import FaceRecon from './components/FaceRecon/FaceRecon';
+import Copyright from './components/Copyright/Copyright';
 import './App.css';
 
 const app = new Clarifai.App({
@@ -98,6 +99,7 @@ class App extends Component {
             )
  
         }
+        <Copyright />
       </div>
     );
   }
