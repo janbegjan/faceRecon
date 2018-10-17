@@ -1,6 +1,7 @@
 
 This is a React App 'Face Recognition' followed by aneagoie <br>
 You will find all the details [here](https://github.com/aneagoie/face-recognition-brain)
+
 [Live](https://jbjonline.xyz/faceRecon/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
